@@ -1,0 +1,88 @@
+# Render Blueprint for Vehicle Repair Database
+# Deploy with one click: https://render.com/deploy
+
+services:
+  # ============================================================================
+  # Backend API Service
+  # ============================================================================
+  - type: web
+    name: vehicle-db-api
+    runtime: python
+    region: oregon
+    plan: starter
+    buildCommand: |
+      cd backend
+      pip install --upgrade pip
+      pip install -r requirements.txt
+    startCommand: |
+      cd backend
+      uvicorn app.main:app --host 0.0.0.0 --port $PORT --workers 2
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: vehicle-db-postgres
+          property: connectionString
+      - key: REDIS_URL
+        fromDatabase:
+          name: vehicle-db-redis
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: API_V1_STR
+        value: /api/v1
+      - key: PROJECT_NAME
+        value: Vehicle Repair Database API
+      - key: LOG_LEVEL
+        value: INFO
+      - key: BACKEND_CORS_ORIGINS
+        value: https://vehicle-db-frontend.onrender.com,http://localhost:3000
+      - key: RATE_LIMIT_PER_MINUTE
+        value: 100
+      - key: NHTSA_API_BASE_URL
+        value: https://vpic.nhtsa.dot.gov/api
+      - key: EPA_API_BASE_URL
+        value: https://www.fueleconomy.gov/feg
+
+  # ============================================================================
+  # Frontend Service
+  # ============================================================================
+  - type: web
+    name: vehicle-db-frontend
+    runtime: node
+    region: oregon
+    plan: starter
+    buildCommand: |
+      cd frontend
+      npm install
+      npm run build
+    startCommand: |
+      cd frontend
+      npm run preview -- --host 0.0.0.0 --port $PORT
+    autoDeploy: true
+    envVars:
+      - key: VITE_API_URL
+        value: https://vehicle-db-api.onrender.com/api/v1
+      - key: NODE_VERSION
+        value: 18.18.0
+
+# ============================================================================
+# Database Services
+# ============================================================================
+databases:
+  # PostgreSQL Database
+  - name: vehicle-db-postgres
+    databaseName: vehicle_db
+    user: vehicle_user
+    region: oregon
+    plan: starter
+    postgresMajorVersion: 15
+
+  # Redis Cache
+  - name: vehicle-db-redis
+    region: oregon
+    plan: starter
+    maxmemoryPolicy: allkeys-lru
