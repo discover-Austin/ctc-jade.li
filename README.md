@@ -236,38 +236,67 @@ kubectl get pods -n vehicle-db
 
 ## 🤝 Contributing
 
-We welcome contributions from the automotive community!
+We welcome contributions from certified mechanics, automotive technicians, and industry professionals!
+
+**IMPORTANT**: This is proprietary software. All contributors must sign a Contributor License Agreement (CLA) before any contributions can be accepted.
 
 ### How to Contribute
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+1. **Contact us** at contribute@vehiclerepairdb.com to request a CLA
+2. **Sign and return** the Contributor License Agreement
+3. Once approved, you'll receive contributor access
+4. Follow our contribution guidelines below
 
 ### Contribution Guidelines
 
+**Code Contributions:**
 - Follow the code style guide (PEP 8 for Python, ESLint for TypeScript)
 - Write comprehensive tests for new features
 - Update documentation for API changes
-- Verify data accuracy before submitting repair procedures
-- Include sources for technical specifications
+- All code contributions become proprietary to Vehicle Repair Database
 
-### Data Contribution
+**Data Contributions:**
 
-Mechanics and technicians can contribute:
-- Repair procedures with photos
-- Torque specifications
-- Common problem reports
-- Wiring diagrams
-- Diagnostic procedures
+Certified mechanics and technicians can contribute:
+- ✅ Repair procedures with step-by-step photos
+- ✅ Factory torque specifications with sources
+- ✅ Common problem reports with diagnostic procedures
+- ✅ Wiring diagrams and electrical schematics
+- ✅ Technical service bulletin summaries
+- ✅ Real-world diagnostic procedures
 
-All contributions are peer-reviewed by certified mechanics before publication.
+**Quality Standards:**
+- All repair data must be verified against OEM service manuals
+- Include source citations for technical specifications
+- Photos must be high-resolution and clearly labeled
+- All contributions are peer-reviewed by ASE-certified master technicians
+
+**Rights Assignment:**
+By contributing to this project, you agree that all contributions become the exclusive property of Vehicle Repair Database and are subject to the proprietary license terms.
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is **proprietary software**. All rights reserved.
+
+**Copyright (c) 2024-2025 Vehicle Repair Database. All Rights Reserved.**
+
+This software and its associated documentation are protected by copyright law and international treaties. Unauthorized reproduction, distribution, modification, or use of this software is strictly prohibited and may result in severe civil and criminal penalties.
+
+### Usage Rights
+
+- ✅ **Permitted**: Internal evaluation and testing for non-commercial purposes
+- ✅ **Permitted**: Viewing source code for educational purposes
+- ❌ **Prohibited**: Commercial use without a commercial license
+- ❌ **Prohibited**: Redistribution, modification, or derivative works
+- ❌ **Prohibited**: Public hosting or making available over a network
+
+### Commercial Licensing
+
+For commercial use, enterprise licenses, or custom licensing arrangements, please contact:
+- **Email**: licensing@vehiclerepairdb.com
+- **Website**: https://vehiclerepairdb.com
+
+See the [LICENSE](LICENSE) file for complete terms and conditions.
 
 ## 🙏 Acknowledgments
 

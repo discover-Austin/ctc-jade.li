@@ -1,21 +1,180 @@
-MIT License
+PROPRIETARY SOFTWARE LICENSE AGREEMENT
 
-Copyright (c) 2024 Vehicle Repair Database
+Copyright (c) 2024-2025 Vehicle Repair Database. All Rights Reserved.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+IMPORTANT - READ CAREFULLY: This Proprietary Software License Agreement ("Agreement")
+is a legal agreement between you (either an individual or a single entity, "Licensee")
+and Vehicle Repair Database ("Licensor") for the software product identified above,
+which includes computer software and may include associated media, printed materials,
+and online or electronic documentation ("Software").
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+BY INSTALLING, COPYING, OR OTHERWISE USING THE SOFTWARE, YOU AGREE TO BE BOUND BY THE
+TERMS OF THIS AGREEMENT. IF YOU DO NOT AGREE TO THE TERMS OF THIS AGREEMENT, DO NOT
+INSTALL OR USE THE SOFTWARE.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+1. GRANT OF LICENSE
+
+   Subject to the terms and conditions of this Agreement, Licensor grants Licensee a
+   limited, non-exclusive, non-transferable, revocable license to:
+
+   a) Use the Software solely for internal, non-commercial evaluation and testing purposes
+   b) Access the Software's features and functionality as intended by Licensor
+   c) View and study the source code for educational purposes only
+
+2. RESTRICTIONS
+
+   Licensee shall NOT, and shall not permit any third party to:
+
+   a) Copy, modify, adapt, translate, or create derivative works based on the Software
+   b) Reverse engineer, decompile, disassemble, or otherwise attempt to discover the
+      source code or underlying algorithms of the Software (except to the extent that
+      such restriction is expressly prohibited by applicable law)
+   c) Rent, lease, loan, sublicense, distribute, or transfer the Software to any third party
+   d) Remove, alter, or obscure any proprietary notices on the Software
+   e) Use the Software for any commercial purpose without a separate commercial license
+   f) Publicly display, perform, or distribute the Software
+   g) Use the Software to develop competing products or services
+   h) Extract, scrape, or harvest data from the Software for use in other applications
+   i) Republish, redistribute, or make the Software available over a network
+   j) Use the Software in violation of any applicable laws or regulations
+
+3. INTELLECTUAL PROPERTY RIGHTS
+
+   a) The Software is licensed, not sold. Licensor retains all right, title, and interest
+      in and to the Software, including all intellectual property rights therein.
+   b) All trademarks, service marks, logos, trade names, and other proprietary designations
+      used in connection with the Software are proprietary to Licensor.
+   c) This Agreement does not grant Licensee any rights to patents, copyrights, trade
+      secrets, trademarks, or any other intellectual property rights.
+
+4. PROPRIETARY DATA AND CONTENT
+
+   a) All vehicle specifications, repair procedures, diagnostic codes, technical service
+      bulletins, torque specifications, and other data contained in the Software are
+      proprietary to Licensor or its licensors.
+   b) The database structure, schema, and organization are trade secrets of Licensor.
+   c) Licensee acknowledges that the compilation, organization, and presentation of data
+      constitute valuable intellectual property.
+
+5. CONFIDENTIALITY
+
+   a) Licensee acknowledges that the Software contains confidential and proprietary
+      information of Licensor.
+   b) Licensee agrees to maintain the confidentiality of the Software and not disclose
+      it to any third party without prior written consent from Licensor.
+   c) Licensee shall use the same degree of care to protect the Software as it uses to
+      protect its own confidential information, but in no event less than reasonable care.
+
+6. COMMERCIAL USE
+
+   Commercial use of the Software requires a separate commercial license agreement.
+   Commercial use includes, but is not limited to:
+
+   a) Using the Software in a business, commercial, or for-profit environment
+   b) Providing services to third parties using the Software
+   c) Integrating the Software into commercial products or services
+   d) Using the Software's data or functionality in commercial applications
+
+   Contact Licensor at licensing@vehiclerepairdb.com for commercial licensing inquiries.
+
+7. TERM AND TERMINATION
+
+   a) This Agreement is effective upon installation or first use of the Software and
+      continues until terminated.
+   b) Licensor may terminate this Agreement immediately if Licensee breaches any term
+      of this Agreement.
+   c) Upon termination, Licensee must immediately cease all use of the Software and
+      destroy all copies in Licensee's possession or control.
+   d) Sections 3, 5, 8, 9, 10, and 11 shall survive termination of this Agreement.
+
+8. WARRANTY DISCLAIMER
+
+   THE SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND. LICENSOR DISCLAIMS
+   ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT.
+   LICENSOR DOES NOT WARRANT THAT THE SOFTWARE WILL MEET LICENSEE'S REQUIREMENTS OR
+   THAT THE OPERATION OF THE SOFTWARE WILL BE UNINTERRUPTED OR ERROR-FREE.
+
+9. LIMITATION OF LIABILITY
+
+   TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL LICENSOR BE
+   LIABLE FOR ANY SPECIAL, INCIDENTAL, INDIRECT, CONSEQUENTIAL, OR PUNITIVE DAMAGES
+   WHATSOEVER (INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF BUSINESS PROFITS,
+   BUSINESS INTERRUPTION, LOSS OF BUSINESS INFORMATION, OR ANY OTHER PECUNIARY LOSS)
+   ARISING OUT OF THE USE OF OR INABILITY TO USE THE SOFTWARE, EVEN IF LICENSOR HAS
+   BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+   LICENSOR'S TOTAL LIABILITY TO LICENSEE SHALL NOT EXCEED THE AMOUNT PAID BY LICENSEE
+   FOR THE SOFTWARE, IF ANY.
+
+10. INDEMNIFICATION
+
+    Licensee agrees to indemnify, defend, and hold harmless Licensor and its officers,
+    directors, employees, and agents from and against any and all claims, damages,
+    obligations, losses, liabilities, costs, and expenses arising from:
+
+    a) Licensee's use of the Software
+    b) Licensee's violation of this Agreement
+    c) Licensee's violation of any third-party rights
+
+11. GENERAL PROVISIONS
+
+    a) Governing Law: This Agreement shall be governed by and construed in accordance
+       with the laws of the United States and the State of California, without regard
+       to its conflict of law provisions.
+
+    b) Entire Agreement: This Agreement constitutes the entire agreement between the
+       parties concerning the Software and supersedes all prior or contemporaneous
+       agreements, written or oral, concerning such subject matter.
+
+    c) Severability: If any provision of this Agreement is held to be unenforceable,
+       the remaining provisions shall remain in full force and effect.
+
+    d) No Waiver: The failure of Licensor to enforce any right or provision of this
+       Agreement shall not constitute a waiver of such right or provision.
+
+    e) Assignment: Licensee may not assign this Agreement without the prior written
+       consent of Licensor. Any attempted assignment in violation of this provision
+       shall be null and void.
+
+    f) Amendments: Licensor reserves the right to modify this Agreement at any time.
+       Continued use of the Software after such modifications constitutes acceptance
+       of the modified Agreement.
+
+    g) Export Control: Licensee agrees to comply with all applicable export and import
+       laws and regulations. Licensee shall not export or re-export the Software to
+       any prohibited country or entity.
+
+12. CONTACT INFORMATION
+
+    For questions about this Agreement or to request permissions, contact:
+
+    Vehicle Repair Database
+    Email: legal@vehiclerepairdb.com
+    Website: https://vehiclerepairdb.com
+
+13. ACKNOWLEDGMENT
+
+    LICENSEE ACKNOWLEDGES THAT LICENSEE HAS READ THIS AGREEMENT, UNDERSTANDS IT, AND
+    AGREES TO BE BOUND BY ITS TERMS AND CONDITIONS. LICENSEE FURTHER AGREES THAT THIS
+    AGREEMENT IS THE COMPLETE AND EXCLUSIVE STATEMENT OF THE AGREEMENT BETWEEN THE
+    PARTIES AND SUPERSEDES ALL PROPOSALS OR PRIOR AGREEMENTS, ORAL OR WRITTEN, AND
+    ANY OTHER COMMUNICATIONS BETWEEN THE PARTIES RELATING TO THE SUBJECT MATTER OF
+    THIS AGREEMENT.
+
+================================================================================
+
+RESERVED RIGHTS NOTICE
+
+All rights not expressly granted in this Agreement are reserved by Licensor. No other
+licenses or rights are granted by implication, estoppel, or otherwise.
+
+The Software and all associated intellectual property are and shall remain the exclusive
+property of Vehicle Repair Database.
+
+Unauthorized copying, distribution, modification, or use of this Software is strictly
+prohibited and may result in severe civil and criminal penalties.
+
+================================================================================
+
+END OF LICENSE AGREEMENT
