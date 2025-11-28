@@ -16,11 +16,13 @@ class WheelTireSpec(Base):
 
     spec_id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     vehicle_id = Column(UUID(as_uuid=True), ForeignKey("vehicles.vehicle_id"), nullable=False)
-    wheel_diameter_inches = Column(DECIMAL(4, 1))
+    wheel_diameter_inches = Column(Integer)
     wheel_width_inches = Column(DECIMAL(4, 1))
     bolt_pattern = Column(String(20), comment="5x114.3, 6x139.7, etc.")
-    hub_bore_mm = Column(DECIMAL(5, 2))
-    offset_mm = Column(Integer)
+    center_bore_mm = Column(DECIMAL(5, 2), comment="Hub bore diameter")
+    hub_bore_mm = Column(DECIMAL(5, 2))  # Alias for center_bore_mm
+    wheel_offset_mm = Column(Integer)
+    offset_mm = Column(Integer)  # Alias for wheel_offset_mm
     tire_size_front = Column(String(50), comment="235/45R18, etc.")
     tire_size_rear = Column(String(50))
     tire_pressure_front_psi = Column(Integer)
@@ -28,7 +30,7 @@ class WheelTireSpec(Base):
     tpms_type = Column(String(50), comment="Direct, Indirect")
     tpms_frequency_mhz = Column(DECIMAL(6, 3))
     lug_nut_torque_lb_ft = Column(Integer)
-    wheel_material = Column(String(50), comment="Alloy, Steel")
+    wheel_material = Column(String(50), comment="Alloy, Steel, Aluminum Alloy")
     spare_tire_type = Column(String(50))
 
     # Relationship

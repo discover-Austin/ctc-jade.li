@@ -19,9 +19,11 @@ class ElectricalSystem(Base):
     vehicle_id = Column(UUID(as_uuid=True), ForeignKey("vehicles.vehicle_id"), nullable=False)
     battery_voltage = Column(Integer)
     battery_cca = Column(Integer, comment="Cold cranking amps")
+    battery_rc = Column(Integer, comment="Reserve capacity")
     battery_group_size = Column(String(20))
     battery_type = Column(String(50), comment="Lead-acid, AGM, Lithium")
-    alternator_amperage = Column(Integer)
+    alternator_output_amps = Column(Integer)
+    alternator_voltage = Column(String(10))
     starter_type = Column(String(100))
     ignition_system = Column(String(100), comment="Coil-on-plug, distributor, etc.")
     spark_plug_type = Column(String(100))
@@ -33,12 +35,86 @@ class ElectricalSystem(Base):
     can_bus_protocol = Column(String(50), comment="CAN-HS, CAN-LS, LIN, etc.")
     obd2_location = Column(String(200))
     communication_protocols = Column(JSONB, comment="Various network protocols")
+    charging_system_specs = Column(JSONB)
 
     # Relationship
     vehicle = relationship("Vehicle", back_populates="electrical_systems")
 
     def __repr__(self):
         return f"<ElectricalSystem {self.battery_voltage}V for vehicle {self.vehicle_id}>"
+
+
+class BatterySpec(Base):
+    """Detailed battery specifications table."""
+
+    __tablename__ = "battery_specs"
+
+    battery_spec_id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    vehicle_id = Column(UUID(as_uuid=True), ForeignKey("vehicles.vehicle_id"), nullable=False)
+    voltage = Column(Integer, nullable=False)
+    cca = Column(Integer, comment="Cold Cranking Amps")
+    ca = Column(Integer, comment="Cranking Amps")
+    rc = Column(Integer, comment="Reserve Capacity (minutes)")
+    group_size = Column(String(20))
+    length_mm = Column(Integer)
+    width_mm = Column(Integer)
+    height_mm = Column(Integer)
+    battery_type = Column(String(50))
+    terminal_type = Column(String(50))
+    polarity = Column(String(20))
+    oem_part_number = Column(String(100))
+    replacement_options = Column(JSONB)
+
+    # Relationship
+    vehicle = relationship("Vehicle")
+
+    def __repr__(self):
+        return f"<BatterySpec {self.group_size} {self.cca}CCA>"
+
+
+class AlternatorSpec(Base):
+    """Alternator specifications table."""
+
+    __tablename__ = "alternator_specs"
+
+    alternator_spec_id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    vehicle_id = Column(UUID(as_uuid=True), ForeignKey("vehicles.vehicle_id"), nullable=False)
+    output_amps = Column(Integer)
+    voltage_output = Column(String(20))
+    pulley_type = Column(String(50))
+    belt_type = Column(String(50))
+    manufacturer = Column(String(100))
+    oem_part_number = Column(String(100))
+    test_procedure = Column(Text)
+    typical_failures = Column(Text)
+
+    # Relationship
+    vehicle = relationship("Vehicle")
+
+    def __repr__(self):
+        return f"<AlternatorSpec {self.output_amps}A>"
+
+
+class StarterSpec(Base):
+    """Starter motor specifications table."""
+
+    __tablename__ = "starter_specs"
+
+    starter_spec_id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    vehicle_id = Column(UUID(as_uuid=True), ForeignKey("vehicles.vehicle_id"), nullable=False)
+    type = Column(String(100))
+    voltage = Column(Integer)
+    kilowatts = Column(String(10))
+    gear_reduction_ratio = Column(String(20))
+    manufacturer = Column(String(100))
+    oem_part_number = Column(String(100))
+    test_procedure = Column(Text)
+
+    # Relationship
+    vehicle = relationship("Vehicle")
+
+    def __repr__(self):
+        return f"<StarterSpec {self.type}>"
 
 
 class WiringDiagram(Base):
