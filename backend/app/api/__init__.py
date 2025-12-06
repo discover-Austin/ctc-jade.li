@@ -2,11 +2,12 @@
 API router configuration.
 """
 from fastapi import APIRouter
-from app.api.endpoints import vehicles, repair, diagnostic, technical, vin
+from app.api.endpoints import vehicles, repair, diagnostic, technical, vin, auth
 
 api_router = APIRouter()
 
 # Include all endpoint routers
+api_router.include_router(auth.router, prefix="/auth", tags=["Authentication"])
 api_router.include_router(vehicles.router, prefix="/vehicles", tags=["Vehicles"])
 api_router.include_router(vin.router, prefix="/vin", tags=["VIN Decoder"])
 api_router.include_router(repair.router, prefix="/repair", tags=["Repair"])

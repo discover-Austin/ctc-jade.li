@@ -1,9 +1,10 @@
 """
-VIN decoder API endpoints.
+VIN decoder API endpoints with improved error handling and retry logic.
 """
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 import aiohttp
+import asyncio
 import re
 
 from app.db.base import get_db
@@ -56,44 +57,87 @@ def validate_vin(vin: str) -> bool:
 
 async def query_nhtsa_vin_decoder(vin: str) -> dict:
     """
-    Query NHTSA VIN decoder API.
+    Query NHTSA VIN decoder API with timeout and retry logic.
 
     Args:
         vin: Vehicle Identification Number
 
     Returns:
         dict: Decoded VIN information
+
+    Raises:
+        HTTPException: If API call fails after retries
     """
     url = f"{settings.NHTSA_API_BASE_URL}/vehicles/DecodeVinValues/{vin}?format=json"
 
-    async with aiohttp.ClientSession() as session:
-        async with session.get(url) as response:
-            if response.status != 200:
-                raise HTTPException(status_code=500, detail="Failed to decode VIN from NHTSA API")
+    timeout = aiohttp.ClientTimeout(total=settings.NHTSA_API_TIMEOUT)
 
-            data = await response.json()
+    for attempt in range(settings.EXTERNAL_API_RETRY_ATTEMPTS):
+        try:
+            async with aiohttp.ClientSession(timeout=timeout) as session:
+                async with session.get(url) as response:
+                    if response.status != 200:
+                        if attempt < settings.EXTERNAL_API_RETRY_ATTEMPTS - 1:
+                            await asyncio.sleep(settings.EXTERNAL_API_RETRY_DELAY * (attempt + 1))
+                            continue
+                        raise HTTPException(
+                            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+                            detail="NHTSA API is currently unavailable"
+                        )
 
-            if data.get("Results") and len(data["Results"]) > 0:
-                result = data["Results"][0]
+                    data = await response.json()
 
-                # Extract relevant fields
-                return {
-                    "vin": vin,
-                    "year": int(result.get("ModelYear", 0)),
-                    "make": result.get("Make", ""),
-                    "model": result.get("Model", ""),
-                    "trim": result.get("Trim", ""),
-                    "engine": result.get("EngineModel", ""),
-                    "transmission": result.get("TransmissionStyle", ""),
-                    "body_style": result.get("BodyClass", ""),
-                    "drive_type": result.get("DriveType", ""),
-                    "manufacturer": result.get("Manufacturer", ""),
-                    "plant_city": result.get("PlantCity", ""),
-                    "plant_country": result.get("PlantCountry", ""),
-                    "vehicle_type": result.get("VehicleType", ""),
-                }
-            else:
-                raise HTTPException(status_code=404, detail="VIN not found in NHTSA database")
+                    if data.get("Results") and len(data["Results"]) > 0:
+                        result = data["Results"][0]
+
+                        # Validate and extract fields with proper error handling
+                        try:
+                            year = int(result.get("ModelYear") or 0)
+                        except (ValueError, TypeError):
+                            year = 0
+
+                        return {
+                            "vin": vin,
+                            "year": year,
+                            "make": str(result.get("Make") or ""),
+                            "model": str(result.get("Model") or ""),
+                            "trim": str(result.get("Trim") or ""),
+                            "engine": str(result.get("EngineModel") or ""),
+                            "transmission": str(result.get("TransmissionStyle") or ""),
+                            "body_style": str(result.get("BodyClass") or ""),
+                            "drive_type": str(result.get("DriveType") or ""),
+                            "manufacturer": str(result.get("Manufacturer") or ""),
+                            "plant_city": str(result.get("PlantCity") or ""),
+                            "plant_country": str(result.get("PlantCountry") or ""),
+                            "vehicle_type": str(result.get("VehicleType") or ""),
+                        }
+                    else:
+                        raise HTTPException(
+                            status_code=status.HTTP_404_NOT_FOUND,
+                            detail="VIN not found in NHTSA database"
+                        )
+
+        except aiohttp.ClientError as e:
+            if attempt < settings.EXTERNAL_API_RETRY_ATTEMPTS - 1:
+                await asyncio.sleep(settings.EXTERNAL_API_RETRY_DELAY * (attempt + 1))
+                continue
+            raise HTTPException(
+                status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+                detail=f"Failed to connect to NHTSA API: {str(e)}"
+            )
+        except asyncio.TimeoutError:
+            if attempt < settings.EXTERNAL_API_RETRY_ATTEMPTS - 1:
+                await asyncio.sleep(settings.EXTERNAL_API_RETRY_DELAY * (attempt + 1))
+                continue
+            raise HTTPException(
+                status_code=status.HTTP_504_GATEWAY_TIMEOUT,
+                detail="NHTSA API request timed out"
+            )
+
+    raise HTTPException(
+        status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+        detail="Failed to decode VIN after multiple attempts"
+    )
 
 
 @router.post("/decode", response_model=VINDecodeResponse)
